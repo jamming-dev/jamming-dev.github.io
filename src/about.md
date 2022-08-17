@@ -29,7 +29,7 @@ In our work, we relied on the prior research:
 * [A Quantitative Analysis of Security, Anonymity and Scalability for the Lightning Network](https://eprint.iacr.org/2020/303)
 * [Analysis and Probing of Parallel Channels in the Lightning Network](https://eprint.iacr.org/2021/384)
 
-For some of the experiments, we [forked](https://github.com/naumenkogs/ln-probing-simulator/commit/a4660b5fc7d1c7145b0b91cb7d6361193eeb6f7a) the ln-probing-simulator [repo](github.com/s-tikhomirov/ln-probing-simulator).
+For some of the experiments, we [forked](https://github.com/naumenkogs/ln-probing-simulator/commit/a4660b5fc7d1c7145b0b91cb7d6361193eeb6f7a) the ln-probing-simulator [repo](https://github.com/s-tikhomirov/ln-probing-simulator).
 
 ## Contributing
 
