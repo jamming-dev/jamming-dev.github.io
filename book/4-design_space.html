@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Solution Design space</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="about.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-impacts.html"><strong aria-hidden="true">1.</strong> The impacts of channel jamming</a></li><li class="chapter-item expanded "><a href="2-costs.html"><strong aria-hidden="true">2.</strong> Channel jamming costs</a></li><li class="chapter-item expanded "><a href="3-incremental_solutions.html"><strong aria-hidden="true">3.</strong> Incremental solutions to jamming</a></li><li class="chapter-item expanded "><a href="4-design_space.html" class="active"><strong aria-hidden="true">4.</strong> Solution Design space</a></li><li class="chapter-item expanded "><a href="5-advanced_upfront.html"><strong aria-hidden="true">5.</strong> Advanced Upfront Fee (hold-time)</a></li><li class="chapter-item expanded "><a href="6-reputation.html"><strong aria-hidden="true">6.</strong> Reputation Scheme (SC+FP)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="grand-conclusion.html">Subjective Grand Conclusion</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chapter-4-solution-design-space"><a class="header" href="#chapter-4-solution-design-space"><strong>Chapter 4: Solution Design Space</strong></a></h1>
+<h1 id="intro"><a class="header" href="#intro"><strong>Intro</strong></a></h1>
+<p>In previous chapters, we suggested ways to increase the attack cost by forcing the attacker to lock a significant fraction of the amount under attack.</p>
+<p>We will now discuss why these solutions are not satisfactory and suggest better alternatives, which although require substantial changes to the protocol.</p>
+<h2 id="solution-efficiency"><a class="header" href="#solution-efficiency"><strong>Solution efficiency</strong></a></h2>
+<p>A solution to channel jamming is efficient if it costs little for the victims, while making the attack cost substantially higher.</p>
+<p>Both in the context of attacking individual nodes or the entire network, there are two ways to consider a solution satisfactory:</p>
+<ol>
+<li>Routing nodes suffering from the attack should be compensated in full liquidity interest rate (as valued by the routing nodes before the attack), paid by the attacker;</li>
+<li>Alternatively, for those solutions which don’t compensate the suffering routing nodes, the attack cost could be just so high** (substantially** higher than the liquidity interest rate) that an attacker won’t resort to the attack.</li>
+</ol>
+<p>Neither of the incremental solutions proposed in Chapter 3 achieves these objectives.. Now, let’s discuss other ways to achieve them.</p>
+<h2 id="design-directions"><a class="header" href="#design-directions"><strong>Design directions</strong></a></h2>
+<p>The two solution options from the previous chapter could be re-formulated as follows:</p>
+<ul>
+<li>S1: Make lengthy hold of funds a prohibitively expensive attack;</li>
+<li>S2: Allow routing nodes to charge for lengthy hold of funds.</li>
+</ul>
+<p>A whole separate design direction is network-level solutions, which don’t seem feasible to us at the moment, since it would either require substantial LN redesign.</p>
+<p>We also don’t consider changing the structure of channels in this Chapter. We believe that the Chapter 3 overviewed (“JIT Transaction Stagging”) the best we can achieve in this direction.</p>
+<p>We focus on <em>the duration of the hold of funds</em>, and not the time the payment takes, because focusing on the duration of an individual payment would just encourage an attacker to split jamming payments into many short-living ones.</p>
+<p>We see two ways to enable S2:</p>
+<ul>
+<li>W1. Bonding the user to pay the fee at the payment initiating phase;</li>
+<li>W2. Incentivizing the user follow the rules (e.g., pay the fees afterwards) via a reward/punishment scheme.</li>
+</ul>
+<p>Both W1 and W2 could be used to enable S1, if a corresponding routing node just sets the lengthy-hold fees prohibitively high.</p>
+<p><strong>Node-level protection vs. network-level protection</strong></p>
+<p>In the previous Chapters, we discussed how jamming could hurt individual nodes and LN as a whole. As for the defense protocols, it doesn’t make sense to distinguish the two.</p>
+<p>We omit solutions which introduce a new coordination entity/protocol since they would result in significant centralization risks. The best we can do is enable routing nodes to protect themselves by giving them the right tool. Let’s overview some of them now.</p>
+<h3 id="ln-culture-capital-efficiency-vs-financial-access-dlc-swaps-etc"><a class="header" href="#ln-culture-capital-efficiency-vs-financial-access-dlc-swaps-etc"><strong>LN culture: capital efficiency vs. financial access (DLC, Swaps, etc)</strong></a></h3>
+<p>There is a family of non-malicious LN activities, which require lengthy (hours to weeks) holding of funds: <a href="https://github.com/discreetlogcontracts/dlcspecs/">DLC</a>, <a href="https://github.com/ElementsProject/peerswap">swaps</a>, etc. We will call them <em>LHF</em> (lengthy holding of funds).</p>
+<p>Currently, the LN protocol is oblivious to LHF. Routing nodes can’t:</p>
+<ul>
+<li>distinguish them from regular fast payments;</li>
+<li>charge them based on the lock period;</li>
+<li>cancel them if they hold funds for too long.</li>
+</ul>
+<p>We believe that the LN protocol will have to take them into consideration. Otherwise, the emerging LHFs not paying higher fees would force routing nodes to charge higher fees both from them and from small payments.</p>
+<p>We think that handling LHFs is equivalent to solving the jamming issue: if the ecosystem decides that LHFs are undesired, they could seek solutions among S1 or S2. Otherwise, they should seek it among S2.</p>
+<p>Now, we will overview more concrete design directions. We will cover both W1 and W2, remaining oblivious of the S1/S2 choice.</p>
+<h2 id="w1-bonding-to-a-fee-payment"><a class="header" href="#w1-bonding-to-a-fee-payment"><strong>W1: bonding to a fee payment</strong></a></h2>
+<p>Obliging a payment sender to pay for the lengthy payments could be done via:</p>
+<ul>
+<li>W1.1 a bond over the same payment channels</li>
+<li>W1.2 an on-chain Bitcoin smart contract (either pure or via oracles/third-parties)</li>
+<li>W1.3 third-party arbitrage</li>
+<li>W1.4 a smart contract on another blockchain</li>
+</ul>
+<p>We believe that W1.1 should be prioritized and thoroughly explored, before proceeding to the latter ones, as the Lightning-only model makes the most sense in terms of threat model (better than W1.3 and W1.4) and convenience/efficiency (better than W1.2 and W1.4).</p>
+<h3 id="w11-bonding-the-payer-via-the-same-payment-channels"><a class="header" href="#w11-bonding-the-payer-via-the-same-payment-channels"><strong>W1.1 Bonding the payer via the same payment channels</strong></a></h3>
+<p>There are <strong>two ways to bond</strong> a payer to the fee obligations via the same channels:</p>
+<ul>
+<li>directly (guaranteeing the fees will be paid to every routing node);</li>
+<li>transitively (guaranteeing to pay to the first hop, which pays for the second hop, etc.).</li>
+</ul>
+<p>We believe that <strong>the latter</strong> direction falls into the existing LN operation model much <strong>better,</strong> and implementing the former would require substantial changes to the LN operation (e.g., leaking payment privacy to every routing node).</p>
+<p>Another aspect is the <strong>exact mechanism guaranteeing the fees are paid</strong>:</p>
+<ul>
+<li>either game-theoretical (everyone is incentivized to resolve the payment faster);</li>
+<li>or contract-based (e.g., pre-signed transactions unlocking more funds towards the routing node while time passes; or additional HTLCs dedicated at every hop).</li>
+</ul>
+<p>The fee-based game-theoretical design space stemmed from the evolution of a naive upfront payment proposal summarized <a href="https://github.com/t-bast/lightning-docs/blob/master/spam-prevention.md#proposals">here</a>, resulting in a <em>hold-time-dependent bidirectional upfront payment schemes</em> were proposed. We overview them and put them in the Chapter 5.</p>
+<p><em>The contract-based design space is currently not well-explored, with a small exception for <a href="https://lists.linuxfoundation.org/pipermail/lightning-dev/2019-November/002275.html">hashcash-based schemes</a>.</em></p>
+<h2 id="w2-incentivizing-the-rules-via-rewardspunishments"><a class="header" href="#w2-incentivizing-the-rules-via-rewardspunishments"><strong>W2: Incentivizing the rules via rewards/punishments</strong></a></h2>
+<p>The most important part in designing a reward/punishment scheme is choosing the corresponding **resource. **In this case, <strong>a collateral</strong> and <strong>the right to route payments</strong> are two options that make most sense.</p>
+<p><em>We leave finding a trust-minimized scheme for collateral burning for future work, and focus on the latter option instead.</em></p>
+<p>Among the latter solutions, the mechanism of <strong>distributing those resources</strong> should be decided (e.g., they could be purchased). Purchasing, however, is equivalent to the straightforward upfront payment schemes, which <a href="https://github.com/t-bast/lightning-docs/blob/master/spam-prevention.md#naive-upfront-payment">were deemed to be flawed</a>. Instead, we suggest assigning these rights based on the previous LN activity (e.g., previous payments).</p>
+<p>This is effectively a reputation scheme consisting of <strong>two components</strong>:</p>
+<ol>
+<li>An identity (e.g., a dedicated private/public keypair, a proof of UTXO ownership, a PoW token, etc.)</li>
+<li>A reputation algorithm (how much is allocated initially; could it go to 0 and get the user banned; etc.)</li>
+</ol>
+<p><em>While implementing this policy, the following trade-off should be considered: making it harder to obtain a reputation hurts both an attacker and honest user. We believe that a good reputation algorithm is a key answer to this trade-off.</em></p>
+<p>An identity <strong>could be anonymized</strong> by proving ownership without revealing the item (e.g., a zero-knowledge proof of owning a UTXO). This works only for those identities, where a public list is available (not for PoW tokens).</p>
+<p>A payer’s reputation could be <strong>either localized by every routing node or</strong> <strong>shared</strong> <strong>among many routing</strong> <strong>nodes</strong> (possibly, along with the proofs of malicious behavior).</p>
+<p>We believe that the latter could hurt the payer’s anonymity, and requires a serious reliable infrastructure, which becomes an attack surface (both exploit-wise and regulatory-wise).</p>
+<p>Now, let’s <strong>focus on the former</strong>.</p>
+<h3 id="w21-local-reputation"><a class="header" href="#w21-local-reputation"><strong>W2.1 Local reputation</strong></a></h3>
+<p>There are two fundamentally different <strong>ways to implement a locally-enforced reputation</strong> used to decide whether to forward payment or not: <strong>direct</strong> (looking at the payer) <strong>or transitive</strong> (looking at the previous hop, which would look at the previous hop, etc.).</p>
+<p><em>We believe that trivial versions of the latter are prone to the attacker manipulations of the reputation between two honest nodes. We leave a thorough exploration of this direction for further research. For now, we focus on the former family of solutions.</em></p>
+<p>Currently, routing nodes don't know who initiated the payment. Within a reputation protocol, every payment could be <strong>associated with an identity</strong>, <strong>either within the onion, or out-of-band</strong>.</p>
+<p><strong>Proving reputation ownership could be non-interactive</strong> (via one round of communication, a payer sends a proof to a routing node) <strong>or interactive</strong> (three rounds, a payer asks a routing node for a challenge, and then submits an associated proof). The latter makes selling the proofs on the secondary market harder but requires a more sophisticated implementation.</p>
+<p>Reputation schemes may use “secondary assets” (e.g., reputation tokens) or just stick to the original identity proof.</p>
+<p>Another important component of the reputation system is the <strong>reputation formula.</strong> Since it could be different at every routing node, it could be either <strong>derivable/asked by the payers</strong> at every routing node, or <strong>oblivious to payers</strong>.</p>
+<p>In one of the following Chapters, we will discuss concrete reputation protocols in more detail.</p>
+<h2 id="conclusions"><a class="header" href="#conclusions"><strong>Conclusions</strong></a></h2>
+<p>We attempted to overview the design space of fundamental solutions to channel jamming. We believe this helps in better understanding all the alternatives, and making a better informed decision in the end.</p>
+<p>Within this design space, we highlighted two most promising directions:</p>
+<ul>
+<li>bonding the payer to pay the fee via the same payment channels;</li>
+<li>forwarding payments based on the locally-tracked reputation on the payment sender.</li>
+</ul>
+<p>We also suggested the directions which are currently under-explored.</p>
+<p>In the following Chapters, we will discuss implementations of these promising directions.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="3-incremental_solutions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="5-advanced_upfront.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="3-incremental_solutions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="5-advanced_upfront.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

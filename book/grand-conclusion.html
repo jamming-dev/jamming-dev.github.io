@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Chapter 1</title>
+        <title>Subjective Grand Conclusion</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="about.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-impacts.html"><strong aria-hidden="true">1.</strong> The impacts of channel jamming</a></li><li class="chapter-item expanded "><a href="2-costs.html"><strong aria-hidden="true">2.</strong> Channel jamming costs</a></li><li class="chapter-item expanded "><a href="3-incremental_solutions.html"><strong aria-hidden="true">3.</strong> Incremental solutions to jamming</a></li><li class="chapter-item expanded "><a href="4-design_space.html"><strong aria-hidden="true">4.</strong> Solution Design space</a></li><li class="chapter-item expanded "><a href="5-advanced_upfront.html"><strong aria-hidden="true">5.</strong> Advanced Upfront Fee (hold-time)</a></li><li class="chapter-item expanded "><a href="6-reputation.html"><strong aria-hidden="true">6.</strong> Reputation Scheme (SC+FP)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="grand-conclusion.html" class="active">Subjective Grand Conclusion</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,12 +142,35 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="subjective-grand-conclusion"><a class="header" href="#subjective-grand-conclusion">Subjective Grand Conclusion</a></h1>
+<p>Here are our (Antoine's and Gleb's) personal thoughts on the subject.</p>
+<p>We believe that Channel Jamming is a substantial risk to the LN, both against individual nodes and the network as a whole.</p>
+<p>A good solution to jamming should either:</p>
+<ul>
+<li>guarantee the routing nodes could be compensated in full for locking their liquidity;</li>
+<li>or, otherwise, locking their liquidity should cost substantially more than the harm done.</li>
+</ul>
+<p>The former approach also makes lengthy hold of funds (DLC, Swap protocols, etc.) feasible in the LN.</p>
+<p>After overviewing known solution directions we identify the following matrix of solutions:</p>
+<ul>
+<li>Fees could be not charged at all (every lengthy lock implies a ban), be charged upfront (pessimistic), or charged afterwards (optimistic);</li>
+<li>Reputation ID may be based on a plain keypair or on Stake Certificates;</li>
+<li>Forwarding Pass may or may not be applied to introduce routing tokens.</li>
+</ul>
+<p>Since every aspect adds susbtantial complexity to the system, we should make sure that improvements they bring are worth it. More specifically,
+we should evaluate:</p>
+<ul>
+<li>whether reputation-based approach could overcome the discussed asymmetries between an attacker and an honest user (for both SC and FP);</li>
+<li>whether FP could efficienlty balance the risks between payment sender/recipient and routing nodes;</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="6-reputation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -156,6 +179,9 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="6-reputation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 

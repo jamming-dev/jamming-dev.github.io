@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Channel jamming costs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="about.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-impacts.html"><strong aria-hidden="true">1.</strong> The impacts of channel jamming</a></li><li class="chapter-item expanded "><a href="2-costs.html" class="active"><strong aria-hidden="true">2.</strong> Channel jamming costs</a></li><li class="chapter-item expanded "><a href="3-incremental_solutions.html"><strong aria-hidden="true">3.</strong> Incremental solutions to jamming</a></li><li class="chapter-item expanded "><a href="4-design_space.html"><strong aria-hidden="true">4.</strong> Solution Design space</a></li><li class="chapter-item expanded "><a href="5-advanced_upfront.html"><strong aria-hidden="true">5.</strong> Advanced Upfront Fee (hold-time)</a></li><li class="chapter-item expanded "><a href="6-reputation.html"><strong aria-hidden="true">6.</strong> Reputation Scheme (SC+FP)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="grand-conclusion.html">Subjective Grand Conclusion</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="channel-jamming-costs"><a class="header" href="#channel-jamming-costs">Channel jamming costs</a></h1>
+<h2 id="intro"><a class="header" href="#intro">Intro</a></h2>
+<p>In the previous chapter, we discussed the goals jamming may achieve. Now, we will look at the resources an attacker has to spend to achieve them; and how these resources could be minimized.</p>
+<p>This is important to evaluate the feasibility of jamming attacks, as well as to evaluate the absolute efficiency of the potential solutions.</p>
+<p>We make the following assumptions for simplicity:</p>
+<ul>
+<li>attacker’s channels are funded solely by the attacker (single-funded);</li>
+<li>when we say “a channel is jammed”, we mean that <em>one direction</em> of that channel can’t be used for payment forwarding (for discussing disabling in both directions, it’s usually sufficient to just <em>multiply the costs by 2</em>);</li>
+<li>attacker uses slot jamming, as it is currently significantly cheaper than amount jamming, which is covered in Chapter 3.</li>
+</ul>
+<p><strong>Jamming as a merchant</strong></p>
+<p>Our analysis generally assumes an attacker uses an anonymous fresh identity and thus has to open channels and issue payments. Alternatively, a malicious popular merchant employs its position to jam target channels by routing incoming payments through them (via the “route hints” feature) and then manipulating those payments. A similar risk could be studied in the context of trampoline nodes.</p>
+<p>This alternative attack introduces a new trade-off: a malicious merchant sacrifices with buyers’ time to make a payment (including failed attempts), to attack the LN or particular nodes.</p>
+<p><em>The cost/benefit analysis in these cases is different, as it would be focused on “how much of the personal reputation and economic gains an attacker is willing to sacrifice to make substantial harm to the competitors”. We leave studying these dynamics for future work.</em></p>
+<h2 id="cost-aspects"><a class="header" href="#cost-aspects"><strong>Cost Aspects</strong></a></h2>
+<p>Assuming an attacker already has available BTC capital, these funds have to be locked in LN payment channels. It boils down to two cost aspects: on-chain fees and opportunity cost. Let’s discuss both in more detail.</p>
+<h3 id="on-chain-fees"><a class="header" href="#on-chain-fees"><strong>On-chain fees</strong></a></h3>
+<p>Assuming the attacker is capable of batch-opening multiple channels in one transaction, the associated on-chain fees could be measured with the following formula:</p>
+<p><code>f1: opening_cost(N) = (N * 34 + 122) vbytes * 1sat/vbyte = 34 * N + 122 (sats)</code></p>
+<p>This calculation also assumes the minimal <code>1sat/vbyte</code> feerate, which can be achieved by opening the channels while fees are lower. Consistently high feerates make the attack proportionally more expensive, thus making the system more secure against these attacks. </p>
+<p>In our work, we assume low feerates in our further calculations, reflecting the current fee market.</p>
+<h3 id="opportunity-cost"><a class="header" href="#opportunity-cost"><strong>Opportunity cost</strong></a></h3>
+<p>Once channels are opened, the attacker has to dedicate the locked funds for jamming and keep them busy for the attack duration.</p>
+<p>The lower bound for the locked amount <em>per target channel</em> is defined by the following factors (the largest of them):</p>
+<ul>
+<li><code>htlc_minimum_msat * 483</code>, so that one attacker’s channel is sufficient to jam all slots of one target channel (e.g., <code>1*483 = 483 sats</code> in LND by default)</li>
+<li>routing fees associated with forwarding jamming payments (e.g., 483 sats in LND by default with their <a href="https://github.com/lightningnetwork/lnd/blob/master/sample-lnd.conf">basefee</a>; the cost is higher if the jamming payment requires multiple hops)</li>
+<li>minimum channel capacity an honest node in the network would agree to while opening a channel (e.g., 20,000 sats in LND by default).</li>
+</ul>
+<p>Given that the latter aspect is currently dominating, the opportunity cost could be measured as follows:</p>
+<p><code>f2: opportunity_cost(N) = T * interest_rate * N * 20,000 (sats)</code></p>
+<p>For example, given the monthly interest rate of 1%, owning one minimal attack channel would cost 200 sats a month, and it would allow jamming at least one channel for this period.</p>
+<p>Now, let’s discuss how this could be optimized even further.</p>
+<h3 id="cost-optimizations-and-complications"><a class="header" href="#cost-optimizations-and-complications"><strong>Cost optimizations and complications</strong></a></h3>
+<p><strong>Optimization: Looping</strong></p>
+<p>LN payment length is bound by implementation details, and we will refer to the maximum length as max_hops. Since this value is higher than the length an attacker usually needs to reach one target, an attacker can use one HTLC slot to lock multiple target slots. If the path is looped, an attacker can lock several slots of one channel.</p>
+<p>For example, if max_hops=20, after dedicating 2 slots to the first and the last hop, an attacker could use the remaining 18 slots for the attack.</p>
+<p><strong>Optimization: rebalancing targets</strong></p>
+<p>Rebalancing the target channel is an honest activity that may achieve the same goals: reduce <em>payment_success</em> for paying over certain channels.</p>
+<p align="center" width="100%">
+    <img width="100%" src="pics/rebalance.png">
+    <br />
+    <i>A straightforward rebalancing won’t be effective because a victim could rebalance back these channels as easily. In fact, some implementations already do this.
+</i>
+</p>
+<p>However, if a victim doesn’t rebalance back their channels <strong>immediately</strong>, an attacker may use this to reduce the attack cost.</p>
+<p>For example in Figure 2, if Mallory rebalances Alice’s channels, she has to jam only one channel instead of three, which disables <strong>all</strong> of Alice’s channels while jamming only one.</p>
+<p>Cost-wise, this optimization reduces the number of channel openings at the cost of routing rebalance payments.</p>
+<p>Let’s now assume that every four channels could be emptied towards the fifth channel. Then, the cost could be computed with the following formula:</p>
+<p><code>f3: rebalancing_cost(capacity) = capacity * percent_fee + base_fee</code></p>
+<p><code>f4: cost_with_rebalancing(N, capacity) = opening_cost(N/5) + opportunity_cost(N/5) + rebalancing_cost(capacity)</code></p>
+<p>It becomes apparent that this optimization makes sense when the opportunity for rebalancing is high enough to justify routing fees.</p>
+<p>In any case, we believe that an attacker won’t apply this optimization because:</p>
+<ul>
+<li>the vast majority of LN nodes (potential targets) have fewer than three channels, making this optimization useless;</li>
+<li>for the remaining nodes, the optimization gives very little benefit while transaction fees are low (and it’s not even guaranteed to work).</li>
+</ul>
+<p><em>We thus won’t apply this optimization for our further measurements, although it could be useful in the future where channel opening costs grow faster than routing fees.</em></p>
+<p><strong>Optimization: targeting the surroundings</strong></p>
+<p>Instead of jamming/rebalancing target channels directly, the attacker may identify the bottlenecks surrounding the target and jam/rebalance them.</p>
+<p align="center" width="100%">
+    <img width="66%" src="pics/rebalance_sur.png">
+    <br />
+    <i>Rebalancing the surroundings
+</i>
+</p>
+<p>Arguably, this scenario is even more harmful, because the victim would take longer to detect the attack, and applying some of the countermeasures may be more difficult. Similarly, this could be used to reduce the quality of the topology.</p>
+<p><em>In any case, we leave particular estimates of this attack for future work, as it requires substantial research (especially w.r.t. route blinding).</em></p>
+<h2 id="attack-costs-and-gains"><a class="header" href="#attack-costs-and-gains"><strong>Attack costs and gains</strong></a></h2>
+<h3 id="the-cost-of-attacking-a-small-set-of-nodes"><a class="header" href="#the-cost-of-attacking-a-small-set-of-nodes"><strong>The cost of attacking a small set of nodes</strong></a></h3>
+<p>If the attacker targets a routing node or a merchant, jamming their channels directly is the most efficient strategy.</p>
+<p>These channels can’t be chained since they share a vertex. At best (for the attacker) they could be a part of three-hop circuits so that one attacker’s channel can jam 6 victim channels, assuming looping is used.</p>
+<p>If we then assume most nodes/merchants have less than 6 channels, it would be sufficient for the attacker to have one channel to jam a victim entirely. In other words, the cost of jamming most of the routing nodes and victims is 156 sats (see f1) for opening and 200 sats/month in opportunity cost (see f2).</p>
+<p>The most powerful routing nodes would have way more than 6 channels. According to <a href="https://1ml.com/node?order=capacity">1ml.com data</a>, nodes with the highest capacity usually have 200+ channels. Attacking 200 channels would cost 5200 sats and 6700 sats/month in opportunity cost.</p>
+<p><em>For these well-connected nodes, <strong>rebalance-and-jam</strong> could be used to optimize these costs even further. However, given the already low cost of this attack, we omit this optimization in this case.</em></p>
+<h3 id="the-cost-of-attacking-the-entire-network"><a class="header" href="#the-cost-of-attacking-the-entire-network"><strong>The cost of attacking the entire network</strong></a></h3>
+<p>In this section, we estimate the cost of reducing the network-wide payment_success by jamming a large number of routing nodes. We use a small subset of <a href="https://github.com/s-tikhomirov/ln-probing-simulator">s-tikhomirov/ln-probing-simulator</a> features to model the network in the following way:</p>
+<ul>
+<li>network graph snapshot from our Core Lightning node, with channel balances assigned as random(0, capacity)</li>
+<li>50% of the balance is not available (to model in-flight payment flow activity)</li>
+<li>every payment has a 10% chance to fail at every hop (to model failures unrelated to liquidity)</li>
+</ul>
+<p>We model 100 payments from a source node (connected to 3 random well-connected nodes) towards random recipients over 10 shortest paths and observe <em>payment_success</em>. Then, we repeat the experiment with some channels jammed, according to two strategies: jamming random channels and jamming top channels (considering their location in the topology).</p>
+<p align="center" width="100%">
+    <img width="66%" src="pics/data1.png">
+</p>
+<p>According to our measurements, advanced target selection allows making the network almost unusable by jamming 20% of the channels (~14,000 channels).</p>
+<p>With the estimates above and looping, this would require between 14,000/6=2334 and 14,000 attacker’s channels. The cost would be between</p>
+<ul>
+<li>~80,000 sats + 470,000 sats/month in opportunity cost</li>
+<li>~480,000 sats + 2,820,000 sats/month in opportunity cost</li>
+</ul>
+<h3 id="stealing-the-fees"><a class="header" href="#stealing-the-fees"><strong>Stealing the fees</strong></a></h3>
+<p>The opportunities to steal routing fees fluctuate by many factors, which are difficult to evaluate comprehensively. It’s unlikely that stealing fees could be a sufficient goal for a long-term attack: an attacker becomes a target for the very same attack. However, stealing fees could indeed partially compensate the attack cost when the goal is different.</p>
+<p><em>Considering the rapid evolvement of routing algorithms in the network, and the complexity of such experiment, we decided to not attempt measuring which fraction of fees could be stolen. We leave this question for future research.</em></p>
+<h3 id="other-gains"><a class="header" href="#other-gains"><strong>Other gains</strong></a></h3>
+<p>An attacker may use targeted jamming to hijack the purchases of goods and services. For example, if an attacker provides access to a VPN for Lightning payments, it could jam its competitors so that all consumers use the attacker's services. This applies to any <a href="https://en.wikipedia.org/wiki/Substitute_good">substitute goods</a>.</p>
+<p>Miners could use jamming to attack the LN, so that users are forced to use on-chain payments, assuming they reasonably substitute off-chain payments. This could also apply to any alternative payment providers (cryptocurrency, fiat).</p>
+<p>These kinds of gains should be evaluated on an individual basis. Unlike stealing fees, these likely could be a first-order goal of an attacker.</p>
+<h2 id="conclusions"><a class="header" href="#conclusions"><strong>Conclusions</strong></a></h2>
+<p>In this Chapter, we identified that the attack cost only depends on the number of targets, but not on their sizes. We measured the costs of attacking individual nodes of different sizes, as well as the network as whole in detail. We also noticed that successfully stealing routing fees could significantly reduce the attack cost.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="1-impacts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="3-incremental_solutions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="1-impacts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="3-incremental_solutions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The impacts of channel jamming</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="about.html">About</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="1-impacts.html" class="active"><strong aria-hidden="true">1.</strong> The impacts of channel jamming</a></li><li class="chapter-item expanded "><a href="2-costs.html"><strong aria-hidden="true">2.</strong> Channel jamming costs</a></li><li class="chapter-item expanded "><a href="3-incremental_solutions.html"><strong aria-hidden="true">3.</strong> Incremental solutions to jamming</a></li><li class="chapter-item expanded "><a href="4-design_space.html"><strong aria-hidden="true">4.</strong> Solution Design space</a></li><li class="chapter-item expanded "><a href="5-advanced_upfront.html"><strong aria-hidden="true">5.</strong> Advanced Upfront Fee (hold-time)</a></li><li class="chapter-item expanded "><a href="6-reputation.html"><strong aria-hidden="true">6.</strong> Reputation Scheme (SC+FP)</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="grand-conclusion.html">Subjective Grand Conclusion</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="the-impacts-of-channel-jamming"><a class="header" href="#the-impacts-of-channel-jamming">The impacts of channel jamming</a></h1>
+<h2 id="intro"><a class="header" href="#intro">Intro</a></h2>
+<p>Channel Jamming is often considered a big (and <a href="https://lists.linuxfoundation.org/pipermail/lightning-dev/2015-August/000135.html">old known</a>) issue to the Lightning Network. In this series of posts, we aim to advance channel jamming research.</p>
+<p>We think better understanding the threat of jamming is important because it allows to:</p>
+<ul>
+<li>better allocate protocol development engineering resources based on the priorities;</li>
+<li>make a better decision in mitigating channel jamming (compare the solutions; make sure a solution is not an overkill, etc.)</li>
+</ul>
+<p>In this post, we identify and measure the harm jamming could cause.</p>
+<h2 id="dos"><a class="header" href="#dos"><strong>DoS</strong></a></h2>
+<p>Channel Jamming attack is a type of Denial-of-Service, and the attacker’s goal is to disrupt victim’s operation efficiently.</p>
+<p>In our work, we separately discuss targeting a single victim and harming the entire network. In Chapter 1, we discuss what an attacker may achieve in either case. In the Chapter 2, we will cover the attack costs.</p>
+<p>The goal of a DoS attack is to prevent payments, either routed through the victim or paying the victim. The effectiveness of jamming thus could be characterized by the reduction of <em>payment_success</em> rate (either forwarding-related or acceptance-related), applied to the victim or the entire LN.</p>
+<p>The focus of our work is observing how jamming could affect a victim's <em>payment_success</em> and finding ways to making it prohibitively expensive.</p>
+<h3 id="targeted-dos"><a class="header" href="#targeted-dos">Targeted DoS</a></h3>
+<p>Jamming payments towards a single node (or a small set of nodes) could be relevant in the following scenarios:</p>
+<ul>
+<li>a competing routing node interested in forwarding more payments instead of the victim and taking the fees;</li>
+<li>a competing merchant preventing the victim from selling goods or providing services.</li>
+</ul>
+<p align="center" width="100%">
+    <img width="66%" src="pics/simple_jam.png">
+    <br />
+    <i>Mallory jammed the channel between Alice and Bob/Caroll, the merchant nodes, to prevent the buying of services between them.</i>
+</p>
+<p>We now discuss four concrete effects of jamming in more detail, <em>none of which have an easy mitigation</em>.</p>
+<p><strong>Blocking/Stealing routing fees</strong></p>
+<p>Lightning users run routing nodes to earn fees, and the amount they earn depends on the locked amount, their <em>payment_success</em>, and certain forwarding properties (historical success rate, fee strategy, CLTV delta, etc.). Reducing <em>payment_success</em> reduces the earned fees (linearly with the current state of scoring algorithms).</p>
+<p>Currently, the harm jamming achieves is only bounded by the attacker’s resources. In other words, it is theoretically possible to block all fees.</p>
+<p>At the same time, the fraction of the fees that could be <em>stolen</em> (by running parallel channels) is bounded by the external factors: e.g., routing algorithms used by payment senders.</p>
+<p><strong>Routing reputation loss</strong></p>
+<p>The BOLT specification allows payment senders to use arbitrary routing algorithms. Popular LN routing algorithms lean towards tracking the reputation of routing nodes based on the historic data (forwarding success rate),<a href="https://github.com/lightningdevkit/rust-lightning/pull/1625"> e.g in LDK</a>. Jamming could cause the victim’s channels to get penalized in terms of reduced reputation.</p>
+<p>Protocol flexibility and future uncertainty make it hard to predict concrete impact of DoS on these reputation systems in the future, especially considering that the attacks could also be adapted.</p>
+<p><strong>Disrupting business reputation</strong></p>
+<p>Jamming could prevent a victim from accepting payments, which results in short-term opportunity losses and long-term business reputation losses. The exact losses depend on many business-related factors. With the ongoing deployment of many LSP and <a href="https://github.com/BitcoinAndLightningLayerSpecs/lsp">specification of their services</a>, operating business jamming-initiated disruption could become more concerning.</p>
+<p><strong>Exhausting watchtower credits</strong></p>
+<p>Watchtowers are likely to become an essential part of LN infrastructure supporting mobile clients, and thus watchtower credit would become an important resource. Frequently spamming victim’s channels (which is a special type of jamming) <a href="https://github.com/t-bast/lightning-docs/blob/master/spam-prevention.md#watchtower-credit-exhaustion">could quickly exhaust</a> victim’s watchtower credits, since every state update could require a watchtower call and corresponding credit consumption.</p>
+<h3 id="network-wide-dos"><a class="header" href="#network-wide-dos">Network-wide DoS</a></h3>
+<p>An attacker may jam the entire network with the goal of compromising the LN and drag protocol users to other payment protocols, including fiat.</p>
+<p>Ultimately, this attack would split the network into N partitions, in which payments can’t flow from one to another, so that the overall <em>payment_success</em> for payments <em>across partitions</em> is reduced. These partitions could have either partial issues with communication, or being completely separated.</p>
+<p align="center" width="100%">
+    <img width="66%" src="pics/partitioning.png">
+    <br />
+    <i>Mallory jammed the channels between the subnet Alice-Bob-Caroll and the rest of the network, therefore partitioning their ability to send payments across the subnets.</i>
+</p>
+<p>In the end, the LN could lose credibility both from the transactors (because they can’t buy/sell goods and services reliably), and from the routing nodes (because they can’t earn fees reliably).</p>
+<p><em>We leave understanding whether a significant fraction of LN users would leave if network-wide payment_success goes down for further research. This could involve user surveys and observing real-world data (LN payment failure rate, channel closure mempool activity, on-chain payment increase, etc.), although the latter is complicated due to the privacy of the LN.</em></p>
+<p><strong>Network-wide channel closures</strong></p>
+<p>Apart from minimizing <em>payment_success</em>, an attacker might seek to trigger many channel closures in response to a long-lasting network DoS.</p>
+<p>This may be motivated by the attacker’s will to earn higher fees (as a miner), as a part of a larger attack that involves massive channel closures (e.g., <a href="https://arxiv.org/abs/2006.08513">flood&amp;loot</a>), or simply for bringing additional inconvenience and costs to the LN users.</p>
+<p><em>We are currently unaware of any LN implementations closing their payment channels in case jamming is detected or in case of significant payment success reduction, and we consider this scenario to be unlikely in the future. Combined with a social attack, however, this could pose more serious risks.</em></p>
+<h3 id="probing"><a class="header" href="#probing">Probing</a></h3>
+<p>Probing attack allows inferring channel balances by making dummy payments and observing whether they were successfully routed over the target. Usually, probes use binary search and terminate when a given precision is achieved.</p>
+<p>It was <a href="https://eprint.iacr.org/2021/384.pdf">demonstrated</a> that in many cases it is impossible to fully probe channels in the presence of parallel channels. This could be overcome by jamming these parallel channels leaving only one available, and then probing it (repeated for every channel).</p>
+<p>Jamming could enhance probing both of a small set of targets and the entire network.</p>
+<h2 id="conclusions"><a class="header" href="#conclusions"><strong>Conclusions</strong></a></h2>
+<p>In this Chapter we overviewed different types of harm channel jamming could impose.</p>
+<p>We highlight the risks for individual LN users (loosing fees, getting routing reputation reduced and inability to do business) and LN as a whole (compromising the credibility, consequences of massive channel closures or extended payment censorship). We also mention that for both cases deanonymization via probing becomes more feasible.</p>
+<p>In the following Chapter, we aim to measure the costs an attacker may bear to achieve their goals in <em>payment_success</em> reduction and probing enhancements.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="about.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="2-costs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="about.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="2-costs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
