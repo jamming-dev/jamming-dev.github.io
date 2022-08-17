@@ -3,3 +3,7 @@ authors = ["Gleb Naumenko"]
 language = "en"
 multilingual = false
 src = "src"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "rust"
