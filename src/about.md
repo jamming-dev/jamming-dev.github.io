@@ -33,7 +33,7 @@ For some of the experiments, we [forked](https://github.com/naumenkogs/ln-probin
 
 ## Contributing
 
-We intend to update this website following open-source practices through the [GitHub repo](github.com/naumenkogs/jamming-dev.github.io).
+We intend to update this website following open-source practices through the [GitHub repo](https://github.com/naumenkogs/jamming-dev.github.io).
 
 ## License
 
